@@ -1,0 +1,5 @@
+./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
+
+dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
+
+dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
