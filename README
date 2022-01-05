@@ -7,11 +7,11 @@ export DAPR_CERT_CHAIN=`cat $HOME/.dapr/certs/issuer.crt`
 export DAPR_CERT_KEY=`cat $HOME/.dapr/certs/issuer.key`
 export NAMESPACE=default
 
-**Sentry:** ./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
+**Sentry:**   ./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
 
-**GreetingGRPC:** dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
+**GreetingGRPC:**   dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
 
-**ClientGRPC:** dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
+**ClientGRPC:**   dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
 
 
 --------------------------------------------
@@ -35,7 +35,7 @@ $ dotnet --list-sdks
 LOGS
 --------------------------------------------
 
-**Sentry**
+**Sentry**  
 
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/sentry$ ./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
 INFO[0000] starting sentry certificate authority -- version 1.5.1 -- commit c6daae8e9b11b3e241a9cb84c33e5aa740d74368  instance=jetson-nano scope=dapr.sentry type=log ver=unknown
@@ -50,7 +50,7 @@ INFO[0001] validator created                             instance=jetson-nano sc
 INFO[0001] sentry certificate authority is running, protecting ya'll  instance=jetson-nano scope=dapr.sentry type=log ver=unknown
 INFO[0001] Healthz server is listening on :8080          instance=jetson-nano scope=dapr.sentry type=log ver=unknown
 
-**GreetingGRPC**
+**GreetingGRPC**  
 
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/GreetingGRPC$ dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
 ℹ️  Starting Dapr with id greetinggrpc. HTTP Port: 39723. gRPC Port: 41647
@@ -717,7 +717,7 @@ DEBU[0171] error connecting to placement service: rpc error: code = Unavailable 
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/GreetingGRPC
 
 
-**ClientGRPC**
+**ClientGRPC**  
 
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/ClientGRPC$ dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
 ℹ️  Starting Dapr with id greetinggrpcclient. HTTP Port: 32881. gRPC Port: 36351
