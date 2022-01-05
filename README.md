@@ -1,42 +1,36 @@
---------------------------------------------
-DEVELOPMENT ENVIRONMENT
---------------------------------------------
-
-export DAPR_TRUST_ANCHORS=`cat $HOME/.dapr/certs/ca.crt`
-export DAPR_CERT_CHAIN=`cat $HOME/.dapr/certs/issuer.crt`
-export DAPR_CERT_KEY=`cat $HOME/.dapr/certs/issuer.key`
-export NAMESPACE=default
-
-**Sentry:**   ./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
-
-**GreetingGRPC:**   dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
-
-**ClientGRPC:**   dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
-
-
---------------------------------------------
-DEVELOPMENT ENVIRONMENT
---------------------------------------------
-
-Jetson Nano development board
-
+**DEVELOPMENT ENVIRONMENT**  
+```
 $ uname -a
-Linux jetson-nano 4.9.253-tegra #1 SMP PREEMPT Mon Jul 26 12:13:06 PDT 2021 aarch64 aarch64 aarch64 GNU/Linux
+Linux jetson-nano 4.9.253-tegra #1 SMP PREEMPT Mon Jul 26 12:13:06 PDT 2021 aarch64 aarch64 aarch64 GNU/Linux 
 
 $dapr --version
 CLI version: 1.5.1
-Runtime version: 1.5.1
+Runtime version: 1.5.1  
 
 $ dotnet --list-sdks
 6.0.101 [/home/jetson/.dotnet/sdk]
+```  
 
+**Environment Variables**  
+```
+export DAPR_TRUST_ANCHORS=\`cat $HOME/.dapr/certs/ca.crt\`
+export DAPR_CERT_CHAIN=\`cat $HOME/.dapr/certs/issuer.crt\`
+export DAPR_CERT_KEY=\`cat $HOME/.dapr/certs/issuer.key\`
+export NAMESPACE=default  
+```  
+**Sentry:**  
+`./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local`
 
---------------------------------------------
-LOGS
---------------------------------------------
+**GreetingGRPC:**  
+`dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run`
+
+**ClientGRPC:**  
+`dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run`  
+
+**LOGS**
 
 **Sentry**  
-
+```
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/sentry$ ./sentry --issuer-credentials $HOME/.dapr/certs --trust-domain cluster.local
 INFO[0000] starting sentry certificate authority -- version 1.5.1 -- commit c6daae8e9b11b3e241a9cb84c33e5aa740d74368  instance=jetson-nano scope=dapr.sentry type=log ver=unknown
 INFO[0000] log level set to: info                        instance=jetson-nano scope=dapr.sentry type=log ver=unknown
@@ -49,9 +43,11 @@ INFO[0001] trust root bundle loaded. issuer cert expiry: 2023-01-04 18:54:37 +00
 INFO[0001] validator created                             instance=jetson-nano scope=dapr.sentry type=log ver=unknown
 INFO[0001] sentry certificate authority is running, protecting ya'll  instance=jetson-nano scope=dapr.sentry type=log ver=unknown
 INFO[0001] Healthz server is listening on :8080          instance=jetson-nano scope=dapr.sentry type=log ver=unknown
+```
 
 **GreetingGRPC**  
 
+```
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/GreetingGRPC$ dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
 ℹ️  Starting Dapr with id greetinggrpc. HTTP Port: 39723. gRPC Port: 41647
 INFO[0000] starting Dapr Runtime -- version 1.5.1 -- commit c6daae8e9b11b3e241a9cb84c33e5aa740d74368  app_id=greetinggrpc instance=jetson-nano scope=dapr.runtime type=log ver=1.5.1
@@ -715,10 +711,11 @@ DEBU[0171] error connecting to placement service: rpc error: code = Unavailable 
 ^Z
 [1]+  Stopped                 dapr run --app-id greetinggrpc --app-port 5000 --app-protocol grpc --config ../AccessLists/helloconfig.yaml --log-level debug -- dotnet run
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/GreetingGRPC
+```
 
+**ClientGRPC**
 
-**ClientGRPC**  
-
+```
 jetson@jetson-nano:~/projects/introducing-dapr/Chapter 6/ClientGRPC$ dapr run --app-id greetinggrpcclient --log-level debug -- dotnet run
 ℹ️  Starting Dapr with id greetinggrpcclient. HTTP Port: 32881. gRPC Port: 36351
 ℹ️  Checking if Dapr sidecar is listening on HTTP port 32881
@@ -790,4 +787,4 @@ DEBU[0011] Refreshing mDNS addresses for app id greetinggrpc timed out.  app_id=
 ℹ️
 terminated signal received: shutting down
 ✅  Exited Dapr successfully
-
+```
