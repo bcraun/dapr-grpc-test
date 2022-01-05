@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: helloconfig
+  namespace: default
+spec:
+  mtls:
+    enabled: true
+  # accessControl:
+  #   defaultAction: deny 
+  #   trustDomain: "public"
+  #   policies:
+  #   - appId: greetinggrpcclient 
+  #     defaultAction: deny
+  #     trustDomain: "public"
+  #     namespace: "default"
+  #     operations:
+  #     - name: /SayHello
+  #       #httpVerb: ['GET'] 
+  #       action: allow
+ 
